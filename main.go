@@ -4,18 +4,20 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	_ "github.com/jackc/pgx/v5/stdlib"
 )
 
 func main() {
 
-	pgHost := "postgres://user1:user1password@localhost:5432/order_db"
+	pgHost := "postgres://user1:user1password@postgres:5432/order_db"
 	clusterID := "cluster"
 	clientID := "client"
-	natsHost := "nats://localhost:4222"
+	natsHost := "nats://nats:4222"
 	chanNATS := "orders"
 
+	time.Sleep(time.Second * 10)
 	// Подключение к БД
 	db := connectDB(pgHost)
 	defer db.Close()

@@ -19,7 +19,7 @@ func main() {
 	}
 
 	// Подключаемся к NATS Streaming
-	sc, err := stan.Connect("cluster", "publisher", stan.NatsURL("nats://localhost:4222"))
+	sc, err := stan.Connect("cluster", "publisher", stan.NatsURL("nats://nats:4222"))
 	if err != nil {
 		log.Fatal("Ошибка подключения:", err)
 	}
