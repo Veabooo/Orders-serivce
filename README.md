@@ -1,4 +1,4 @@
-# Order Service (NATS Streaming + PostgreSQL + Web UI)
+# Orders service (NATS Streaming + PostgreSQL + Web UI)
 
 Микросервис для обработки заказов через **NATS Streaming**, с хранением в **PostgreSQL**, кэшированием и веб-интерфейсом.
 
@@ -11,6 +11,12 @@
 - Восстановление кэша при старте
 - HTTP: `/:8080` — поиск, `/order?id=...` — просмотр
 - Паблишер: `publish/publish.go`
+
+---
+
+### Видео-демонстрация работы сервиса и интерфейса
+
+- https://disk.yandex.ru/i/mGPLwmaF-TxQ3A
 
 ---
 
