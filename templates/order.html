@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Заказ {{.OrderUID}}</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; }
+    .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1 { color: #007bff; }
+    .section { margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 5px; }
+    .label { font-weight: bold; color: #555; display: inline-block; width: 180px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background: #007bff; color: white; }
+    .back { margin-bottom: 20px; display: inline-block; color: #007bff; text-decoration: none; }
+    .back:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back">Назад к поиску</a>
+    <h1>Заказ: {{.OrderUID}}</h1>
+
+    <!-- Основные данные -->
+    <div class="section">
+      <h3>Основная информация</h3>
+      <div><span class="label">Трек-номер:</span> {{.TrackNumber}}</div>
+      <div><span class="label">Entry:</span> {{.Entry}}</div>
+      <div><span class="label">Локаль:</span> {{.Locale}}</div>
+      <div><span class="label">Клиент:</span> {{.CustomerID}}</div>
+      <div><span class="label">Служба доставки:</span> {{.DeliveryService}}</div>
+      <div><span class="label">SmID:</span> {{.SmID}}</div>
+      <div><span class="label">Shardkey:</span> {{.Shardkey}}</div>
+      <div><span class="label">OofShard:</span> {{.OofShard}}</div>
+      <div><span class="label">Дата создания:</span> {{.DateCreated}}</div>
+      <div><span class="label">Внутренняя подпись:</span> {{.InternalSignature}}</div>
+    </div>
+
+    <!-- Доставка -->
+    <div class="section">
+      <h3>Доставка</h3>
+      <div><span class="label">Имя:</span> {{.Delivery.Name}}</div>
+      <div><span class="label">Телефон:</span> {{.Delivery.Phone}}</div>
+      <div><span class="label">Email:</span> {{.Delivery.Email}}</div>
+      <div><span class="label">Адрес:</span> {{.Delivery.Address}}, {{.Delivery.City}}, {{.Delivery.Region}}</div>
+      <div><span class="label">Индекс:</span> {{.Delivery.Zip}}</div>
+    </div>
+
+    <!-- Оплата -->
+    <div class="section">
+      <h3>Оплата</h3>
+      <div><span class="label">Транзакция:</span> {{.Payment.Transaction}}</div>
+      <div><span class="label">Request ID:</span> {{.Payment.RequestID}}</div>
+      <div><span class="label">Валюта:</span> {{.Payment.Currency}}</div>
+      <div><span class="label">Провайдер:</span> {{.Payment.Provider}}</div>
+      <div><span class="label">Сумма:</span> {{.Payment.Amount}}</div>
+      <div><span class="label">Стоимость доставки:</span> {{.Payment.DeliveryCost}}</div>
+      <div><span class="label">Итого за товары:</span> {{.Payment.GoodsTotal}}</div>
+      <div><span class="label">Таможня:</span> {{.Payment.CustomFee}}</div>
+      <div><span class="label">Дата оплаты:</span> {{.Payment.PaymentDt}}</div>
+      <div><span class="label">Банк:</span> {{.Payment.Bank}}</div>
+    </div>
+
+    <!-- Товары -->
+    <div class="section">
+      <h3>Товары</h3>
+      {{if .Items}}
+      <table>
+        <tr>
+          <th>Название</th>
+          <th>Бренд</th>
+          <th>Размер</th>
+          <th>Цена</th>
+          <th>Скидка</th>
+          <th>Итого</th>
+          <th>Статус</th>
+        </tr>
+        {{range .Items}}
+        <tr>
+          <td>{{.Name}}</td>
+          <td>{{.Brand}}</td>
+          <td>{{.Size}}</td>
+          <td>{{.Price}}</td>
+          <td>{{.Sale}}%</td>
+          <td>{{.TotalPrice}}</td>
+          <td>{{.Status}}</td>
+        </tr>
+        {{end}}
+      </table>
+      {{else}}
+      <p>Товары отсутствуют</p>
+      {{end}}
+    </div>
+  </div>
+</body>
+</html>
