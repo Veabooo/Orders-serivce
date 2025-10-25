@@ -1,4 +1,4 @@
-# Order Service (NATS Streaming + PostgreSQL + Web UI)
+# Orders service (NATS Streaming + PostgreSQL + Web UI)
 
 Микросервис для обработки заказов через **NATS Streaming**, с хранением в **PostgreSQL**, кэшированием и веб-интерфейсом.
 
