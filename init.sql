@@ -14,3 +14,5 @@ CREATE TABLE IF NOT EXISTS orders (
     date_created TEXT,
     oof_shard TEXT
 );
+
+GRANT ALL ON TABLE orders TO user1;
